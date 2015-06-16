@@ -5,7 +5,12 @@ class ProvidersController < ApplicationController
 
   def create
     @provider = Provider.create(provider_params)
-    redirect_to @provider
+
+    if @provider.valid?
+      redirect_to @provider
+    else
+      render :new
+    end
   end
 
   def show

@@ -1,6 +1,14 @@
 <h1>Provider Registration</h1>
 
 <%= form_for(@provider) do |f| %>
+  <% if @provider.errors.any? %>
+    <ul>
+      <% @provider.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div>
     <%= f.label(:name) %>
     <%= f.text_field(:name) %>
