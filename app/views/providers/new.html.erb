@@ -1,0 +1,29 @@
+<h1>Provider Registration</h1>
+
+<%= form_for(@provider) do |f| %>
+  <div>
+    <%= f.label(:name) %>
+    <%= f.text_field(:name) %>
+  </div>
+  <div>
+    <%= f.label(:address) %>
+    <%= f.text_area(:address) %>
+  </div>
+  <div>
+    <%= f.label(:postcode) %>
+    <%= f.text_field(:postcode) %>
+  </div>
+  <div>
+    <%= f.label(:about_me) %>
+    <%= f.text_area(:about_me) %>
+  </div>
+  <div>
+    <%= f.label(:paypal_email) %>
+    <%= f.email_field(:paypal_email) %>
+  </div>
+  <div>
+    <%= f.label(:accepted_terms) %>
+    <%= f.check_box(:accepted_terms) %>
+  </div>
+  <%= f.submit %>
+<% end %>
