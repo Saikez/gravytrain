@@ -1,5 +1,5 @@
 Given(/^no Providers exist$/) do
-  Provider.delete_all
+  expect(Provider.count).to eq(0)
 end
 
 When(/^I am on the registration page$/) do
