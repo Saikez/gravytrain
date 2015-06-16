@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Provider <%= @provider.id %></title>
+  </head>
+  <body>
+    <h1>Provider Profile (<%= @provider.name %>)</h1>
+    <br />
+
+    <div style="margin:10px;">
+      <p>
+        <div style="display:inline-block;width:150px;">Name: </div>
+        <%= @provider.name %>
+      </p>
+    </div>
+    <div style="margin:10px;">
+      <p>
+        <div style="display:inline-block;width:150px;">Address: </div>
+        <%= @provider.address %>
+      </p>
+    </div>
+    <div style="margin:10px;">
+      <p>
+        <div style="display:inline-block;width:150px;">Postcode: </div>
+        <%= @provider.postcode %>
+      </p>
+    </div>
+    <div style="margin:10px;">
+      <p>
+        <div style="display:inline-block;width:150px;">About Me: </div>
+        <%= @provider.about_me %>
+      </p>
+    </div>
+    <div style="margin:10px;">
+      <p>
+        <div style="display:inline-block;width:150px;">PayPal Email: </div>
+        <%= @provider.paypal_email %>
+      </p>
+    </div>
+  </body>
+</html>

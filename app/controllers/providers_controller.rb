@@ -14,7 +14,7 @@ class ProvidersController < ApplicationController
   end
 
   def show
-    render text: 'Done!'
+    @provider = Provider.find(params[:id])
   end
 
   private
