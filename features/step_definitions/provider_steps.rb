@@ -37,40 +37,48 @@ Then(/^my Provider account is not created$/) do
 end
 
 Then(/^I see an error message$/) do
-  expect(page).to have_content('Accepted terms must be accepted')
+  expect(page).to have_content('must be accepted')
 end
 
 Given(/^my Provider profile exists$/) do
-  visit new_provider_path
-  fill_in 'Name', with: 'Simon'
-  fill_in 'Address', with: '10 Pie Lane'
-  fill_in 'Postcode', with: 'YG8BUJB'
-  fill_in 'About me', with: 'LOL'
-  fill_in 'Paypal email', with: 'ben@ben.ben'
-  check 'Accepted terms'
-  click_button 'Create Provider'
+  # visit new_provider_path
+  # fill_in 'Name', with: 'Simon'
+  # fill_in 'Address', with: '10 Pie Lane'
+  # fill_in 'Postcode', with: 'YG8 BUJB'
+  # fill_in 'About me', with: 'LOL'
+  # fill_in 'Paypal email', with: 'ben@ben.ben'
+  # check 'Accepted terms'
+  # click_button 'Create Provider'
+
+  @provider = Provider.create!(name: 'Simon',
+                               address: '10 Pie Lane',
+                               postcode: 'YG8 BUJB',
+                               about_me: 'LOL',
+                               paypal_email: 'dan@dan.dan'
+                              )
 end
 
 When(/^I am on my provider profile page$/) do
-  expect(page).to have_content('Provider Profile (Simon)')
+  # expect(page).to have_content('Provider Profile (Simon)')
+  visit provider_path(@provider)
 end
 
 Then(/^I see my Name$/) do
-  expect(page).to have_content('Name: Simon')
+  expect(page).to have_content(@provider.name)
 end
 
 Then(/^I see my Address$/) do
-  expect(page).to have_content('Address: 10 Pie Lane')
+  expect(page).to have_content(@provider.address)
 end
 
 Then(/^I see my Postcode$/) do
-  expect(page).to have_content('Postcode: YG8BUJB')
+  expect(page).to have_content(@provider.postcode)
 end
 
 Then(/^I see my About me information$/) do
-  expect(page).to have_content('About Me: LOL')
+  expect(page).to have_content(@provider.about_me)
 end
 
 Then(/^I see my Paypal email$/) do
-  expect(page).to have_content('PayPal Email: ben@ben.ben')
+  expect(page).to have_content(@provider.paypal_email)
 end

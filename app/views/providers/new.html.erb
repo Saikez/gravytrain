@@ -6,56 +6,15 @@
   <body>
     <h1>Provider Registration</h1>
 
-    <%= form_for(@provider) do |f| %>
-      <% if @provider.errors.any? %>
-        <ul>
-          <% @provider.errors.full_messages.each do |error| %>
-            <li><%= error %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <div>
-        <div style="width:150px;display:inline-block;margin:10px;">
-          <%= f.label(:name, size: 20) %>
-        </div>
-        <%= f.text_field(:name) %>
-      </div>
-      <div>
-        <div style="width:150px;display:inline-block;margin:10px;">
-          <%= f.label(:address) %>
-        </div>
-        <%= f.text_area(:address) %>
-      </div>
-      <div>
-        <div style="width:150px;display:inline-block;margin:10px;">
-          <%= f.label(:postcode) %>
-        </div>
-        <%= f.text_field(:postcode) %>
-      </div>
-      <div>
-        <div style="width:150px;display:inline-block;margin:10px;">
-          <%= f.label(:about_me) %>
-        </div>
-        <%= f.text_area(:about_me, html: { width: '150px' }) %>
-      </div>
-      <div>
-        <div style="width:150px;display:inline-block;margin:10px;">
-          <%= f.label(:paypal_email) %>
-        </div>
-        <%= f.email_field(:paypal_email) %>
-      </div>
-      <div>
-        <div style="width:150px;display:inline-block;margin:10px;">
-          <%= f.label(:accepted_terms) %>
-        </div>
-        <%= f.check_box(:accepted_terms) %>
-      </div>
-      <br />
-
-      <div style="margin:10px;">
+    <%= simple_form_for(@provider) do |f| %>
+      <%= f.error_notification %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :postcode %>
+        <%= f.input :about_me %>
+        <%= f.input :paypal_email %>
+        <%= f.input :accepted_terms, as: :boolean %>
         <%= f.submit %>
-      </div>
     <% end %>
   </body>
 </html>
