@@ -51,4 +51,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'nyan-cat-formatter'
+  gem 'rspec-rainbow'
 end
