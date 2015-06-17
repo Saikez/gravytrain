@@ -13,10 +13,6 @@ RSpec.describe Provider do
       )
     end
 
-    let(:provider2) do
-      provider2 = Provider.new(accepted_terms: '1')
-    end
-
     it 'is valid with valid attributes' do
       expect(provider).to be_valid
     end
@@ -27,8 +23,55 @@ RSpec.describe Provider do
       expect(provider).to_not be_valid
     end
 
-    it 'doesn\'t allow nil values' do
-      expect(provider2).to_not be_valid
+    describe 'doesn\'t allow nil values' do
+      it 'name cannot be nil' do
+        provider.name = nil
+
+        expect(provider).to_not be_valid
+      end
+
+      it 'address cannot be nil' do
+        provider.address = nil
+
+        expect(provider).to_not be_valid
+      end
+
+      it 'postcode cannot be nil' do
+        provider.postcode = nil
+
+        expect(provider).to_not be_valid
+      end
+
+      it 'about_me cannot be nil' do
+        provider.about_me = nil
+
+        expect(provider).to_not be_valid
+      end
+
+      it 'paypal email cannot be nil' do
+        provider.paypal_email = nil
+
+        expect(provider).to_not be_valid
+      end
+    end
+
+    it 'doesn\'t allow incorrectly foramtted emails' do
+      provider.paypal_email = 'hello.hi'
+
+      expect(provider).to_not be_valid
+    end
+
+    it 'checks that the email hasn\'t already been registered' do
+      Provider.create!(
+          name: 'someone',
+          address: 'someplace',
+          postcode: 'something',
+          about_me: 'somehow',
+          paypal_email: 'this@that.thing',
+          accepted_terms: '1'
+        )
+
+      expect(provider).to_not be_valid
     end
   end
 end
