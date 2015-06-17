@@ -1,0 +1,31 @@
+!!! 5
+%html
+  %head
+    %title Provider =@provider.id
+  %body
+    %h1
+      Provider Profile (
+      %span
+        =@provider.name
+      )
+    %br
+    %div{ 'style' => 'margin:10px;' }
+      %p
+        %div{ 'style' => 'display:inline-block;width:150px;' } Name:
+        =@provider.name
+    %div{ 'style' => 'margin:10px;' }
+      %p
+        %div{ 'style' => 'display:inline-block;width:150px;' } Address:
+        =@provider.address
+    %div{ 'style' => 'margin:10px;' }
+      %p
+        %div{ 'style' => 'display:inline-block;width:150px;' } Postcode:
+        =@provider.postcode
+    %div{ 'style' => 'margin:10px;' }
+      %p
+        %div{ 'style' => 'display:inline-block;width:150px;' } About Me:
+        =@provider.about_me
+    %div{ 'style' => 'margin:10px;' }
+      %p
+        %div{ 'style' => 'display:inline-block;width:150px;' } PayPal Email:
+        =@provider.paypal_email

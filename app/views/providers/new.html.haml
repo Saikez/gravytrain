@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title Provider Registration
+  %body
+    %h1 Provider Registration
+
+    =simple_form_for(@provider) do |f|
+      =f.error_notification
+      =f.input :name
+      =f.input :address
+      =f.input :postcode
+      =f.input :about_me
+      =f.input :paypal_email
+      =f.input :accepted_terms, as: :boolean
+      =f.button :submit
+

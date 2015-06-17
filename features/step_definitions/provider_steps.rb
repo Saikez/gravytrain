@@ -25,7 +25,7 @@ Then(/^my Provider account is created$/) do
 end
 
 Then(/^I see a confirmation message$/) do
-  expect(page).to have_content('Provider Profile (Simon)')
+  expect(page).to have_content('Provider Profile ( Simon )')
 end
 
 When(/^I do not check the Accepted terms checkbox$/) do
@@ -41,15 +41,6 @@ Then(/^I see an error message$/) do
 end
 
 Given(/^my Provider profile exists$/) do
-  # visit new_provider_path
-  # fill_in 'Name', with: 'Simon'
-  # fill_in 'Address', with: '10 Pie Lane'
-  # fill_in 'Postcode', with: 'YG8 BUJB'
-  # fill_in 'About me', with: 'LOL'
-  # fill_in 'Paypal email', with: 'ben@ben.ben'
-  # check 'Accepted terms'
-  # click_button 'Create Provider'
-
   @provider = Provider.create!(name: 'Simon',
                                address: '10 Pie Lane',
                                postcode: 'YG8 BUJB',
