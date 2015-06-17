@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Provider can register' do
-  scenario 'Aprovider account is created' do
+  scenario 'A provider account is created' do
     visit new_provider_path
 
     fill_in 'Name', with: 'Dave'
