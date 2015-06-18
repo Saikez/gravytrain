@@ -10,6 +10,7 @@ Feature: Provider can register
     And I submit my information
     Then my Provider account is created
     And I see a confirmation message
+    And I receive a confirmation email
 
   Scenario: A Provider does not accept the terms
     Given no Providers exist

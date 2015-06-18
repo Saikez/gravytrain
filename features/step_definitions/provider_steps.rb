@@ -28,6 +28,11 @@ Then(/^I see a confirmation message$/) do
   expect(page).to have_content('Provider Profile ( Simon )')
 end
 
+Then(/^I receive a confirmation email$/) do
+  expect(ActionMailer::Base.deliveries).to_not be_empty
+end
+
+
 When(/^I do not check the Accepted terms checkbox$/) do
   uncheck 'Accepted terms'
 end
@@ -45,12 +50,12 @@ Given(/^my Provider profile exists$/) do
                                address: '10 Pie Lane',
                                postcode: 'YG8 BUJB',
                                about_me: 'LOL',
-                               paypal_email: 'dan@dan.dan'
+                               paypal_email: 'dan@dan.dan',
+                               accepted_terms: '1'
                               )
 end
 
 When(/^I am on my provider profile page$/) do
-  # expect(page).to have_content('Provider Profile (Simon)')
   visit provider_path(@provider)
 end
 

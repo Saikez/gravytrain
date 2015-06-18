@@ -7,6 +7,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.create(provider_params)
 
     if @provider.valid?
+      ProvidersMailer.register(@provider).deliver_later
       redirect_to @provider
     else
       render :new
