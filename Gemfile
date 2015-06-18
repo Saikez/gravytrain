@@ -51,4 +51,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'nyan-cat-formatter'
+  gem 'letter_opener'
 end

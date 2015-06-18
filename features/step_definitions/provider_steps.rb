@@ -46,13 +46,14 @@ Then(/^I see an error message$/) do
 end
 
 Given(/^my Provider profile exists$/) do
-  @provider = Provider.create!(name: 'Simon',
-                               address: '10 Pie Lane',
-                               postcode: 'YG8 BUJB',
-                               about_me: 'LOL',
-                               paypal_email: 'dan@dan.dan',
-                               accepted_terms: '1'
-                              )
+  @provider = Provider.create!(
+      name: 'Simon',
+      address: '10 Pie Lane',
+      postcode: 'YG8 BUJB',
+      about_me: 'LOL',
+      paypal_email: 'dan@dan.dan',
+      accepted_terms: '1'
+    )
 end
 
 When(/^I am on my provider profile page$/) do
