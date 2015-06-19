@@ -15,6 +15,10 @@ RSpec.feature 'Provider can register' do
     check 'Accepted terms'
 
     expect { click_button 'Create Provider' }.to change { Provider.count }.by(1)
+
+    # binding.pry
+    expect(Provider.first).to_not be_confirmed
+    # expect(Provider.first.confirmed).to eq(false)
   end
 
   scenario 'A provider does not accept the Accetped terms' do

@@ -28,6 +28,10 @@ Then(/^I see a confirmation message$/) do
   expect(page).to have_content('Provider Profile ( Simon )')
 end
 
+Then(/^my account is unconfirmed$/) do
+  expect(Provider.first).to_not be_confirmed
+end
+
 Then(/^I receive a confirmation email$/) do
   expect(ActionMailer::Base.deliveries).to_not be_empty
 end
@@ -43,6 +47,31 @@ end
 
 Then(/^I see an error message$/) do
   expect(page).to have_content('must be accepted')
+end
+
+Given(/^I have registered$/) do
+  @provider = Provider.create!(
+      name: 'Simon',
+      address: '10 Pie Lane',
+      postcode: 'YG8 BUJB',
+      about_me: 'LOL',
+      paypal_email: 'dan@dan.dan',
+      accepted_terms: '1'
+    )
+end
+
+When(/^I follow the link within my confirmation email$/) do
+  visit(confirm_provider_url(@provider, token: @provider.token))
+end
+
+Then(/^my account is confirmed$/) do
+  # Provider.first.reload
+  # @provider.reload
+  expect(Provider.first).to be_confirmed
+end
+
+Then(/^I am directed to my profile$/) do
+  expect(page).to have_content(@provider.name)
 end
 
 Given(/^my Provider profile exists$/) do
@@ -78,4 +107,16 @@ end
 
 Then(/^I see my Paypal email$/) do
   expect(page).to have_content(@provider.paypal_email)
+end
+
+Given(/^a registered provider with events$/) do
+  pending
+end
+
+When(/^I view the provider's events$/) do
+  pending
+end
+
+Then(/^I see a list of events offered by the provider$/) do
+  pending
 end

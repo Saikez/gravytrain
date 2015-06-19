@@ -11,3 +11,8 @@ Feature: Provider can view their Profile
     And I see my Postcode
     And I see my About me information
     And I see my Paypal email
+
+  Scenario: Viewing a provider's events
+    Given a registered provider with events
+    When I view the provider's events
+    Then I see a list of events offered by the provider

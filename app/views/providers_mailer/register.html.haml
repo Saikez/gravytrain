@@ -1,0 +1,11 @@
+!!! 5
+%html
+  %body
+    %p
+      Dear #{@provider.name}
+    %p
+      %strong Thanks for registering!
+      <br />
+      %a{href: "#{confirm_provider_url(@provider, token: @provider.token)}"} Click here to confirm your account
+    %p
+      GravyTrain Team

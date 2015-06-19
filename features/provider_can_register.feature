@@ -10,7 +10,14 @@ Feature: Provider can register
     And I submit my information
     Then my Provider account is created
     And I see a confirmation message
+    But my account is unconfirmed
     And I receive a confirmation email
+
+  Scenario: Confirming my Provider account
+    Given I have registered
+    When I follow the link within my confirmation email
+    Then my account is confirmed
+    And I am directed to my profile
 
   Scenario: A Provider does not accept the terms
     Given no Providers exist

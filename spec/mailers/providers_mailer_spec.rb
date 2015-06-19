@@ -17,7 +17,7 @@ RSpec.describe ProvidersMailer do
 
     describe '#body' do
       it 'is addressed to the provider' do
-        expect(subject.body.decoded).to include(provider.name)
+        expect(subject.body.parts.first.decoded).to include(provider.name)
       end
     end
   end

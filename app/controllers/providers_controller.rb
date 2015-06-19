@@ -14,6 +14,15 @@ class ProvidersController < ApplicationController
     end
   end
 
+  def confirm
+    if @provider = Provider.find_by(id: params[:id], token: params[:token])
+      @provider.confirm
+      redirect_to @provider
+    else
+      render :text=> "lulwhat?"
+    end
+  end
+
   def show
     @provider = Provider.find(params[:id])
   end
