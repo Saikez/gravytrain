@@ -65,8 +65,6 @@ When(/^I follow the link within my confirmation email$/) do
 end
 
 Then(/^my account is confirmed$/) do
-  # Provider.first.reload
-  # @provider.reload
   expect(Provider.first).to be_confirmed
 end
 
@@ -89,34 +87,29 @@ When(/^I am on my provider profile page$/) do
   visit provider_path(@provider)
 end
 
-Then(/^I see my Name$/) do
+Then(/^I see my details$/) do
   expect(page).to have_content(@provider.name)
 end
 
-Then(/^I see my Address$/) do
-  expect(page).to have_content(@provider.address)
-end
-
-Then(/^I see my Postcode$/) do
-  expect(page).to have_content(@provider.postcode)
-end
-
-Then(/^I see my About me information$/) do
-  expect(page).to have_content(@provider.about_me)
-end
-
-Then(/^I see my Paypal email$/) do
-  expect(page).to have_content(@provider.paypal_email)
-end
-
 Given(/^a registered provider with events$/) do
-  pending
+  @provider = Provider.create!(
+      name: 'Simon',
+      address: '10 Pie Lane',
+      postcode: 'YG8 BUJB',
+      about_me: 'LOL',
+      paypal_email: 'dan@dan.dan',
+      accepted_terms: '1'
+    )
+
+  @provider.events = [Event.create!(
+    name: 'Cool Event'
+    )]
 end
 
 When(/^I view the provider's events$/) do
-  pending
+  visit provider_events_path(@provider, @provider.events.first)
 end
 
 Then(/^I see a list of events offered by the provider$/) do
-  pending
+  expect(page).to have_content(@provider.events.first.name)
 end

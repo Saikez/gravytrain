@@ -1,0 +1,7 @@
+!!! 5
+%html
+  %body
+    %h1 List of Providers
+
+    - @providers.each do |provider|
+      %h4=link_to provider.name, provider

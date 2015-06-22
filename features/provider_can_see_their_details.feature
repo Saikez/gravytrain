@@ -6,11 +6,7 @@ Feature: Provider can view their Profile
   Scenario: A Provider account is created
     Given my Provider profile exists
     When I am on my provider profile page
-    Then I see my Name
-    And I see my Address
-    And I see my Postcode
-    And I see my About me information
-    And I see my Paypal email
+    Then I see my details
 
   Scenario: Viewing a provider's events
     Given a registered provider with events

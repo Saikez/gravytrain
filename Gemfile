@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'rails_layout'
 gem 'high_voltage'
 gem 'haml'
+gem 'nested_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

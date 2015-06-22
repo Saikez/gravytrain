@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %title Provider =@event.id
+  %body
+    %h1 Event Details
+    %br
+    %div{ 'style' => 'margin:10px;' }
+      %p
+        %div{ 'style' => 'display:inline-block;width:150px;' } Name:
+        =@event.name
+    %div{ 'style' => 'margin:10px;' }
+      %p
+        %div{ 'style' => 'display:inline-block;width:150px;' } Provider:
+        =@provider.name

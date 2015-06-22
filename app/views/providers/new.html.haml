@@ -6,12 +6,23 @@
     %h1 Provider Registration
 
     =simple_form_for(@provider) do |f|
-      =f.error_notification
-      =f.input :name
-      =f.input :address
-      =f.input :postcode
-      =f.input :about_me
-      =f.input :paypal_email
-      =f.input :accepted_terms, as: :boolean
-      =f.button :submit
+      %fieldset
+        %legend Provider Details
+        =f.error_notification
+        =f.input :name
+        =f.input :address
+        =f.input :postcode
+        =f.input :about_me
+        =f.input :paypal_email
+        =f.input :accepted_terms, as: :boolean
 
+      %fieldset
+        %legend Event(s)
+        =simple_nested_form_for :events do |f2|
+          =f2.fields_for :events do |e|
+            =e.input :name
+            =e.link_to_remove "Remove this event"
+          =f2.link_to_add "Add an event", :events
+        -# Can't seem to make this work...
+
+      =f.button :submit

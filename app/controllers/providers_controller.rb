@@ -1,4 +1,8 @@
 class ProvidersController < ApplicationController
+  def index
+    @providers = Provider.all
+  end
+
   def new
     @provider = Provider.new
   end
@@ -19,7 +23,7 @@ class ProvidersController < ApplicationController
       @provider.confirm
       redirect_to @provider
     else
-      render :text=> "lulwhat?"
+      render text: "lulwhat?"
     end
   end
 
@@ -31,7 +35,13 @@ class ProvidersController < ApplicationController
 
   def provider_params
     params.require(:provider).permit(
-      :name, :address, :postcode, :about_me, :paypal_email, :accepted_terms
+      :name,
+      :address,
+      :postcode,
+      :about_me,
+      :paypal_email,
+      :accepted_terms,
+      events_attributes: [:id, :name, :_destroy]
     )
   end
 end
